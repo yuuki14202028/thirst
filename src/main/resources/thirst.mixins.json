@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.yuuki14202028.minecraft.thirst.thirst.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "thirst.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
