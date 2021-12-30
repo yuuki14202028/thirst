@@ -1,12 +1,11 @@
 package com.github.yuuki14202028.minecraft.thirst.thirst.packets
 
-import com.github.yuuki14202028.minecraft.thirst.thirst.PlayerAdditionalData
+import com.github.yuuki14202028.minecraft.thirst.thirst.interfaces.PlayerAdditionalData
 import net.minecraft.client.Minecraft
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.fml.DistExecutor
 import net.minecraftforge.network.NetworkEvent
-import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.function.Supplier
 
