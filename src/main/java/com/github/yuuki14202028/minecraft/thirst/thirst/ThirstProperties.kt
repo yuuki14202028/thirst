@@ -30,6 +30,10 @@ class ThirstProperties(
         return fastDrink
     }
 
+    fun isThirst():Boolean {
+        return hydration <= 0
+    }
+
     class Builder {
         var hydration = 0
         var saturationModifier = 0f

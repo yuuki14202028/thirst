@@ -50,7 +50,7 @@ public class ItemMixin implements ItemAdditionalData {
         System.out.println(((ItemAdditionalData)Items.APPLE).getThirstProperties());
         if (this.isDrinkable()) {
             ItemStack itemstack = player.getItemInHand(hand);
-            if (this.thirstProperties.canAlwaysDrink() || ((PlayerAdditionalData)player).getThirstData().needsThirst()) {
+            if ((this.thirstProperties.canAlwaysDrink() || ((PlayerAdditionalData)player).getThirstData().needsThirst()) && !this.thirstProperties.isThirst()) {
                 player.startUsingItem(hand);
                 cir.setReturnValue(InteractionResultHolder.consume(itemstack));
             }

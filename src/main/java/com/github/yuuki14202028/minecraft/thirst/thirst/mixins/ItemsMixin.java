@@ -17,11 +17,41 @@ public class ItemsMixin {
                     ordinal = 0
             )
     )
-    private static Item.Properties injectInit(Item.Properties instance, FoodProperties properties) {
+    private static Item.Properties injectInitApple(Item.Properties instance, FoodProperties properties) {
         ((ItemPropertiesAdditionalData)instance.food(properties)).setThirstProperties(
                 new ThirstProperties.Builder()
                         .hydration(4)
                         .saturationMod(0.6f)
+                        .build()
+        );
+        return instance;
+    }
+    @Redirect(method = "<clinit>",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/world/item/Item$Properties;food(Lnet/minecraft/world/food/FoodProperties;)Lnet/minecraft/world/item/Item$Properties;",
+                    ordinal = 11
+            )
+    )
+    private static Item.Properties injectInitCookedCod(Item.Properties instance, FoodProperties properties) {
+        ((ItemPropertiesAdditionalData)instance.food(properties)).setThirstProperties(
+                new ThirstProperties.Builder()
+                        .hydration(-2)
+                        .saturationMod(1f)
+                        .build()
+        );
+        return instance;
+    }
+    @Redirect(method = "<clinit>",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/world/item/Item$Properties;food(Lnet/minecraft/world/food/FoodProperties;)Lnet/minecraft/world/item/Item$Properties;",
+                    ordinal = 12
+            )
+    )
+    private static Item.Properties injectInitCookedSalmon(Item.Properties instance, FoodProperties properties) {
+        ((ItemPropertiesAdditionalData)instance.food(properties)).setThirstProperties(
+                new ThirstProperties.Builder()
+                        .hydration(-2)
+                        .saturationMod(1f)
                         .build()
         );
         return instance;
