@@ -1,26 +1,18 @@
 package com.github.yuuki14202028.minecraft.thirst.thirst
 
 import com.github.yuuki14202028.minecraft.thirst.thirst.client.ThirstRender
-import com.github.yuuki14202028.minecraft.thirst.thirst.interfaces.ItemAdditionalData
+import com.github.yuuki14202028.minecraft.thirst.thirst.effect.ModEffects
 import net.minecraft.client.Minecraft
-import net.minecraft.client.player.LocalPlayer
-import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.LivingEntity
-import net.minecraft.world.item.Item
-import net.minecraft.world.item.Items
-import net.minecraft.world.item.alchemy.Potions
-import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraftforge.client.gui.ForgeIngameGui
 import net.minecraftforge.client.gui.OverlayRegistry
 import net.minecraftforge.common.MinecraftForge
-import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.event.server.ServerStartingEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.InterModComms
 import net.minecraftforge.fml.InterModComms.IMCMessage
 import net.minecraftforge.fml.common.Mod
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent
@@ -39,6 +31,9 @@ class Thirst {
         FMLJavaModLoadingContext.get().modEventBus.addListener { event: InterModEnqueueEvent -> enqueueIMC(event) }
         // Register the processIMC method for modloading
         FMLJavaModLoadingContext.get().modEventBus.addListener { event: InterModProcessEvent -> processIMC(event) }
+
+        val modEventBus = FMLJavaModLoadingContext.get().modEventBus
+        ModEffects.registerBus(modEventBus)
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this)
@@ -79,21 +74,6 @@ class Thirst {
     fun onServerStarting(event: ServerStartingEvent?) {
         // do something when the server starts
         logger.info("HELLO from server starting")
-    }
-
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-    object RegistryEvents {
-        @SubscribeEvent
-        fun registerItems(event: RegistryEvent.Register<Item>) {
-        }
-
-        @SubscribeEvent
-        fun onBlocksRegistry(blockRegistryEvent: RegistryEvent.Register<Block>) {
-            // register a new block here
-            logger.info("HELLO from Register Block")
-        }
     }
 
     companion object {

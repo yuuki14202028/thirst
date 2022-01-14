@@ -47,7 +47,6 @@ public class ItemMixin implements ItemAdditionalData {
 
     @Inject(method = "use",at = @At(value = "HEAD"),cancellable = true)
     private void injectUse(Level level, Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
-        System.out.println(((ItemAdditionalData)Items.APPLE).getThirstProperties());
         if (this.isDrinkable()) {
             ItemStack itemstack = player.getItemInHand(hand);
             if ((this.thirstProperties.canAlwaysDrink() || ((PlayerAdditionalData)player).getThirstData().needsThirst()) && !this.thirstProperties.isThirst()) {
