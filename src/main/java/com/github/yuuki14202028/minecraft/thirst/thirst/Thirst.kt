@@ -2,8 +2,11 @@ package com.github.yuuki14202028.minecraft.thirst.thirst
 
 import com.github.yuuki14202028.minecraft.thirst.thirst.client.ThirstRender
 import com.github.yuuki14202028.minecraft.thirst.thirst.effect.ModEffects
+import com.github.yuuki14202028.minecraft.thirst.thirst.interfaces.ItemAdditionalData
+import com.github.yuuki14202028.minecraft.thirst.thirst.items.ModItems
 import net.minecraft.client.Minecraft
 import net.minecraft.world.entity.LivingEntity
+import net.minecraft.world.item.Items
 import net.minecraft.world.level.block.Blocks
 import net.minecraftforge.client.gui.ForgeIngameGui
 import net.minecraftforge.client.gui.OverlayRegistry
@@ -33,6 +36,12 @@ class Thirst {
         FMLJavaModLoadingContext.get().modEventBus.addListener { event: InterModProcessEvent -> processIMC(event) }
 
         val modEventBus = FMLJavaModLoadingContext.get().modEventBus
+
+        //items
+        ModItems.registerBus(modEventBus)
+        ModItems.changeVanillaItemProperties()
+
+        //effects
         ModEffects.registerBus(modEventBus)
 
         // Register ourselves for server and other game events we are interested in

@@ -6,11 +6,9 @@
   "refmap": "thirst.refmap.json",
   "mixins": [
     "FoodDataMixin",
-    "FoodsMixin",
     "ItemMixin",
     "ItemMixin$PropertiesAccessor",
     "ItemMixin$PropertiesMixin",
-    "ItemsMixin",
     "PlayerMixin",
     "ServerPlayerMixin"
   ],
