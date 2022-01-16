@@ -6,14 +6,12 @@
   "refmap": "thirst.refmap.json",
   "mixins": [
     "FoodDataMixin",
+    "GuiAccessor",
     "ItemMixin",
     "ItemMixin$PropertiesAccessor",
     "ItemMixin$PropertiesMixin",
     "PlayerMixin",
     "ServerPlayerMixin"
-  ],
-  "client": [
-    "GuiAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
