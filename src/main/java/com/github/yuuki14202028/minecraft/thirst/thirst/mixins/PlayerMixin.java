@@ -62,7 +62,7 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerAddition
         getThirstData().addAdditionalSaveData(nbt);
     }
 
-    @Inject(method = "eat",at = @At(value = "INVOKE",target = "Lnet/minecraft/world/food/FoodData;eat(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)V"))
+    @Inject(method = "eat",at = @At(value = "INVOKE",target = "Lnet/minecraft/world/food/FoodData;eat(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;)V"))
     private void injectEat(Level level, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         this.getThirstData().drink(stack.getItem(), stack);
     }
@@ -79,7 +79,7 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerAddition
     @Redirect(method = "jumpFromGround",at = @At(value = "INVOKE",target = "Lnet/minecraft/world/entity/LivingEntity;jumpFromGround()V"))
     private void injectJumpFromGround(LivingEntity instance) {
         double d0 = (double)this.getJumpPower() + this.getJumpBoostPower();
-        if (this.foodData.getFoodLevel() <= 0) {
+        if (this.foodData.getFoodLevel() <= 6) {
             d0 *= 0.75;
         }
         Vec3 vec3 = this.getDeltaMovement();
