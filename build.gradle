@@ -22,7 +22,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply from: 'https://raw.githubusercontent.com/thedarkcolour/KotlinForForge/site/thedarkcolour/kotlinforforge/gradle/kff-3.1.0.gradle'
 
 group = 'com.github.yuuki14202028.minecraft.thirst'
-version = '0.1.4'
+version = '0.1.5'
 
 java {
     archivesBaseName = 'thirst'
