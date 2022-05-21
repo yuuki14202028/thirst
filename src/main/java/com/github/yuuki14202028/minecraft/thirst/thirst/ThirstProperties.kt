@@ -49,17 +49,13 @@ class ThirstProperties(
             return this
         }
 
-        fun meat(): Builder {
+        fun alwaysEat(always: Boolean): Builder {
+            canAlwaysDrink = always
             return this
         }
 
-        fun alwaysEat(): Builder {
-            canAlwaysDrink = true
-            return this
-        }
-
-        fun fast(): Builder {
-            fastFood = true
+        fun fast(fast: Boolean): Builder {
+            fastFood = fast
             return this
         }
 
