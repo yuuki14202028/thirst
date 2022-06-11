@@ -10,11 +10,9 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiComponent
 import net.minecraft.client.renderer.GameRenderer
 import net.minecraft.resources.ResourceLocation
-import net.minecraft.world.entity.player.Player
 import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.client.gui.ForgeIngameGui
-import kotlin.random.Random
 
 
 @OnlyIn(Dist.CLIENT)
@@ -37,11 +35,11 @@ object ThirstRender {
             val xLoc = xBase - k3 * 8 - 9
             var yLoc = yBase
             if ((player as PlayerAdditionalData).thirstData.saturationLevel <= 0.0f && gui.guiTicks % (thirstAmount * 3 + 1) == 0) {
-                yLoc = yBase + ((gui as GuiAccessor).random().nextInt(3) - 1)
+                yLoc = yBase + ((gui as GuiAccessor).random().m_188503_(3) - 1)
             }
-            var shift = 0;
+            var shift = 0
             if (player.hasEffect(ModEffects.THIRST.get())) {
-                shift += 18;
+                shift += 18
             }
             gui.blit(matrixStack,xLoc,yLoc,1,0,7,9)
             if (k3 * 2 + 1 < thirstAmount) {
