@@ -35,7 +35,7 @@ object ThirstRender {
             val xLoc = xBase - k3 * 8 - 9
             var yLoc = yBase
             if ((player as PlayerAdditionalData).thirstData.saturationLevel <= 0.0f && gui.guiTicks % (thirstAmount * 3 + 1) == 0) {
-                yLoc = yBase + ((gui as GuiAccessor).random().m_188503_(3) - 1)
+                yLoc = yBase + ((gui as GuiAccessor).random().nextInt(3) - 1)
             }
             var shift = 0
             if (player.hasEffect(ModEffects.THIRST.get())) {
